@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'Bounded';
+    src: url('../fonts/Bounded-Light.woff2') format('woff2'),
+         url('../fonts/Bounded-Light.woff') format('woff');
+    font-weight: 300; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bounded';
+    src: url('../fonts/Bounded-Medium.woff2') format('woff2'),
+         url('../fonts/Bounded-Medium.woff') format('woff');
+    font-weight: 500; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bounded';
+    src: url('../fonts/Bounded-SemiBold.woff2') format('woff'),
+         url('../fonts/Bounded-SemiBold.woff2') format('woff2');
+    font-weight: 600; 
+    font-style: normal;
+}

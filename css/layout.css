@@ -10,7 +10,7 @@
     width: 100vw;
     min-height: 100vh;
     overflow: hidden; 
-    background-color: #000000; /* Фон для контраста */
+    background-color: #f4f4f4; 
 }
 
 /* 1. красная плашка */
@@ -18,30 +18,188 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 25vw; 
-    padding: 2.5vw 0;
-    padding-left: 2.5vw;
-    
+    padding: 1.5vw;
+    padding-left: 1.5vw;
+    padding-right: 2.5vw;
+    width: fit-content;
     background-color: #FF4444; 
     color: #FFFFFF;
+    z-index: 5;
     
-    border-top-right-radius: 1.5vw;
-    border-bottom-right-radius: 1.5vw;
+    border-top-right-radius: 10vw;
+    border-bottom-right-radius: 10vw;
     
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-/* 1.1 текст в красной плашке */
+/* 1.1. текст в красной плашке */
 .instruction-plaque span {
     font-family: 'Bounded', sans-serif;
     font-weight: 500; 
     
-    font-size: 1.7vw;
-    line-height: 1.1;
+    font-size: 2vw;
+    line-height: 1.25;
     
     white-space: nowrap;
 }
 
-.plaque-line-2 { margin-left: 1.5vw; }
+.plaque-line-2 { margin-left: 13.65vw; }
+
+
+
+/* 2. плашка kosmolab */
+.kosmolab-frame {
+    position: absolute;
+    top: 0;
+    left: 43.99vw;
+    right: 0; 
+    height: 8.05vw;
+    
+    border: 0.1vw solid #000000;
+    border-radius: 10vw;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2.1. стиль текста */
+.kosmolab-frame div[class^="kosmolab-text"] {
+    font-family: 'Bounded', sans-serif;
+    font-weight: 600; 
+    font-size: 6.8vw;
+    white-space: nowrap;
+    position: absolute;
+}
+
+/* 2.2. текст kosmolab */
+.kosmolab-text {
+    color: #00BBBB;
+    position: absolute;
+    top: 50%;
+    transform: translateY(calc(-45%));
+}
+
+/* 2.3. блендинг */
+.kosmolab-blend-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
+    mix-blend-mode: difference;
+}
+
+/* 2.4. плашка для блендинга */
+.kosmolab-moving-plaque {
+    position: absolute;
+    height: 100%; 
+    width: 24vw;
+    background-color: #00BBBB;
+    border-radius: 10vw;
+
+    animation: slide-kosmolab 2.7s infinite linear alternate;
+}
+
+/* 2.5. анимация */
+@keyframes slide-kosmolab {
+    0% { transform: translateX(68%); }
+    50% { transform: translateX(-68%); }
+    100% { transform: translateX(68%); }
+}
+
+
+/* 3. графика */
+.graphics-frame {
+    position: absolute;
+    top: 8vw; 
+    left: 0;
+    width: 67vw;
+    height: 35vw;
+
+    border: 0.1vw solid #000000;
+    border-radius: 20vw;
+    
+    display: flex;
+}
+
+/* 3.1. большой круг */
+.large-circle {
+    position: absolute;
+    width: 35vw;
+    height: 35vw; 
+    background-color: #236CFF; 
+    border-radius: 50%;
+
+    animation: color-cycle 3s infinite step-end;
+}
+
+/* 3.2. анимация круга */
+@keyframes color-cycle {
+    0%, 100% { background-color: #236CFF; } 
+    
+    25% { background-color: #FF7C40; }
+    50% { background-color: #FF4444; }
+    75% { background-color: #00BBBB; }
+}
+
+/* 3.3. контейнер стека */
+.stack-frame-container {
+    position: absolute;
+    left: 37.5vw;
+    
+    width: 20vw; 
+    height: 34.9vw;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* 3.4. разноцветные элементы */
+.stacked-element { 
+    height: 12vw;
+    width: 17vw;
+    border-radius: 10vw;
+    margin-top: -3.7vw;
+    
+    mix-blend-mode: multiply;
+
+    animation: 3s infinite ease-in-out;
+}
+
+/* 3.5. 1-й элемент без отступа */
+.stacked-element:first-child {
+    margin-top: 0;
+}
+
+/* 3.6. цвета элементов */
+.stack-orange { background-color: #FF7C40; }
+.stack-blue { background-color: #236CFF; }
+.stack-red { background-color: #FF4444; }
+.stack-teal { background-color: #00BBBB; }
+
+/* 3.7. анимация по парам */
+.stack-orange { animation-name: swap-down; } 
+.stack-blue { animation-name: swap-up; } 
+.stack-red { animation-name: swap-down; }
+.stack-teal { animation-name: swap-up; }
+
+/* кардры сдвига */
+@keyframes swap-down {
+    0% { transform: translateY(0vw); }
+    50% { transform: translateY(7.9vw); }
+    100% { transform: translateY(0vw); } 
+}
+
+@keyframes swap-up {
+    0% { transform: translateY(0vw); }
+    50% { transform: translateY(-7.9vw); }
+    100% { transform: translateY(0vw); }
+}

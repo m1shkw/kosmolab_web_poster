@@ -45,7 +45,7 @@
     white-space: nowrap;
 }
 
-.plaque-line-2 { margin-left: 13.65vw; }
+.plaque-line-2 { margin-left: 11vw; }
 
 
 
@@ -53,7 +53,7 @@
 .kosmolab-frame {
     position: absolute;
     top: 0;
-    left: 43.99vw;
+    left: 41.3vw;
     right: 0; 
     height: 8.05vw;
     
@@ -63,6 +63,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 5;
 }
 
 /* 2.1. стиль текста */
@@ -102,15 +103,16 @@
     width: 24vw;
     background-color: #00BBBB;
     border-radius: 10vw;
+    z-index: 0;
 
     animation: slide-kosmolab 2.7s infinite linear alternate;
 }
 
 /* 2.5. анимация */
 @keyframes slide-kosmolab {
-    0% { transform: translateX(68%); }
-    50% { transform: translateX(-68%); }
-    100% { transform: translateX(68%); }
+    0% { transform: translateX(74%); }
+    50% { transform: translateX(-74%); }
+    100% { transform: translateX(74%); }
 }
 
 
@@ -119,8 +121,8 @@
     position: absolute;
     top: 8vw; 
     left: 0;
-    width: 67vw;
-    height: 35vw;
+    width: 62vw;
+    height: 32.16vw;
 
     border: 0.1vw solid #000000;
     border-radius: 20vw;
@@ -131,11 +133,12 @@
 /* 3.1. большой круг */
 .large-circle {
     position: absolute;
-    width: 35vw;
-    height: 35vw; 
+    width: 32vw;
+    height: 32vw; 
     background-color: #236CFF; 
-    border-radius: 50%;
+    border-radius: 100%;
 
+    mix-blend-mode: multiply;
     animation: color-cycle 3s infinite step-end;
 }
 
@@ -151,10 +154,9 @@
 /* 3.3. контейнер стека */
 .stack-frame-container {
     position: absolute;
-    left: 37.5vw;
+    left: 36vw;
     
-    width: 20vw; 
-    height: 34.9vw;
+    height: 32vw;
     
     display: flex;
     flex-direction: column;
@@ -165,7 +167,7 @@
 /* 3.4. разноцветные элементы */
 .stacked-element { 
     height: 12vw;
-    width: 17vw;
+    width: 16vw;
     border-radius: 10vw;
     margin-top: -3.7vw;
     
@@ -191,15 +193,404 @@
 .stack-red { animation-name: swap-down; }
 .stack-teal { animation-name: swap-up; }
 
-/* кардры сдвига */
+/* 3.8 кардры сдвига */
 @keyframes swap-down {
     0% { transform: translateY(0vw); }
-    50% { transform: translateY(7.9vw); }
+    50% { transform: translateY(7.2vw); }
     100% { transform: translateY(0vw); } 
 }
-
 @keyframes swap-up {
     0% { transform: translateY(0vw); }
-    50% { transform: translateY(-7.9vw); }
+    50% { transform: translateY(-7.2vw); }
     100% { transform: translateY(0vw); }
+}
+
+/* 4. оранж фрейм */
+.assembly-plan {
+    position: absolute;
+    top: 8.06vw; 
+    right: 0%;
+    width: 38vw;
+    height: 32vw; 
+    
+    background-color: #FF7C40; 
+    border-radius: 50vh;
+}
+
+/* 4.1 лого космолаб */
+.plan-logo {
+    position: absolute;
+    width: 6vw; 
+    height: auto;
+    left: 50%; 
+    transform: translateX(-50%);
+    top: 2.4vw; 
+}
+
+/* 4.2 заголовок: план сборки */
+.plan-title {
+    position: absolute;
+    left: 50%; 
+    transform: translateX(-50%);
+    bottom: 2.4vw;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: 'Bounded', sans-serif;
+    font-weight: 500; 
+    font-size: 2vw;
+    line-height: 1.1; 
+    text-align: center;
+}
+
+/* 4.3 контейнер шагов */
+.plan-steps-container {
+    position: absolute;
+    top: 8vw;
+    bottom: 8vw; 
+    left: 0;
+    right: 0;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 0 5vw;
+}
+
+/* 4.4 секция шагов */
+.step-item {
+    width: 100%; 
+    height: 4vw;
+    position: relative;
+    display: flex;
+    align-items: center; 
+}
+
+/* 4.5 иконки */
+.step-icon {
+    width: 2.8vw; 
+    height: 2.8vw;
+    position: absolute;
+    
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 4.6 подписи */
+.step-label {
+    font-family: 'Bounded', sans-serif;
+    font-weight: 300; 
+    font-size: 1.3vw;
+    white-space: nowrap;
+    position: absolute;
+    
+    top: 50%; 
+    transform: translateY(-50%); 
+}
+
+/* подписи 1 & 3 */
+.step-core .step-label, 
+.step-flora .step-label { left: calc(50% + 4.3vw); }
+
+/* подписи 2 & 4 */
+.step-relief .step-label, 
+.step-launch .step-label { right: calc(50% + 4.3vw); text-align: right; }
+
+
+
+/* адаптивность 1-й секции */
+@media screen and (max-width: 600px) {
+
+    /* 0. шрифты */
+    .instruction-plaque span {
+        font-size: calc(2vw * 2.5); 
+        line-height: 1.25;
+        white-space: nowrap;
+    }
+    .plaque-line-2 { margin-left: 25vw; }
+    .kosmolab-frame div[class^="kosmolab-text"] {
+        font-size: calc(6.8vw * 1.8);
+    }
+    .plan-title { font-size: calc(2vw * 2.5); }
+
+
+
+
+
+    /* 1. красная плашка */
+    .instruction-plaque {
+        position: static; 
+        width: 100%;
+        padding: 2.3vw;
+        padding-left: 2.3vw;
+    }
+    
+
+    /* 2. плашка kosmolab */
+    .kosmolab-frame {
+        position: relative; 
+        width: 100%;
+        height: 16vw;
+        left: 0%;
+        
+        border: 0.1vw solid #000000;
+        border-radius: 10vw;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 5;
+    }
+
+    /* 2.2. текст kosmolab */
+    .kosmolab-text {
+        color: #00BBBB;
+        position: static;
+        top: 50%;
+        transform: translateY(calc(-45%));
+    }
+
+    /* 2.3. блендинг-слой */
+    .kosmolab-blend-layer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        mix-blend-mode: difference;
+    }
+    
+    /* 2.4. маленькая плашка блендинг */
+    .kosmolab-moving-plaque {
+        position: absolute; 
+        width: 40vw;
+        height: 100%;
+        background-color: #00BBBB;
+        border-radius: 10vw;
+        top: 0;
+        bottom: 0;
+        z-index: 0;
+        
+        animation: slide-kosmolab 2.7s infinite linear alternate;
+    }
+
+    /* 2.5. анимация плашки */
+    @keyframes slide-kosmolab {
+        0% { transform: translateX(78%); }
+        50% { transform: translateX(-78%); }
+        100% { transform: translateX(78%); }
+    }
+
+
+
+
+
+    /* 3. графика */
+    .graphics-frame {
+        position: static; 
+        width: 100%;
+        height: auto;
+        
+        border: 0.1vw solid #000000;
+        border-radius: 50vw;
+        
+        display: flex;
+    }
+    
+    /* 3.1. большой круг */
+    .large-circle {
+        position: static;
+        width: 100vw;
+        height: 50vw; 
+        
+        border-radius: 100%;
+        mix-blend-mode: multiply;
+    }
+    
+    /* 3.3. контейнер стека */
+    .stack-frame-container {
+        position: static;
+        width: 100%;
+        height: 50vw; 
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    /* 3.4. разноцветные элементы */
+    .stacked-element { 
+        height: 16vw;
+        width: 22vw;
+        border-radius: 10vw;
+        
+        mix-blend-mode: multiply;
+
+        animation: 3s infinite ease-in-out;
+    }
+
+    /* 3.5. 1-й элемент без отступа */
+    .stacked-element:first-child {
+        margin-top: 0;
+    }
+
+    /* 3.7. анимация по парам */
+    .stack-orange { animation-name: swap-down; } 
+    .stack-blue { animation-name: swap-up; } 
+    .stack-red { animation-name: swap-down; }
+    .stack-teal { animation-name: swap-up; }
+
+    /* 3.8 кардры сдвига */
+    @keyframes swap-down {
+        0% { transform: translateY(0vw); }
+        50% { transform: translateY(11.65vw); }
+        100% { transform: translateY(0vw); } 
+    }
+    @keyframes swap-up {
+        0% { transform: translateY(0vw); }
+        50% { transform: translateY(-11.65vw); }
+        100% { transform: translateY(0vw); }
+    }
+
+
+
+
+
+    
+    /* 4. оранжевый фрейм */
+    .assembly-plan {
+        position: static; 
+        width: 100%; 
+        height: auto;
+        right: auto;
+        
+        background-color: #FF7C40; 
+        
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 4.5vw 6vw;
+    }
+    
+    /* 4.1 логотип */
+    .plan-logo {
+        position: static; 
+        transform: none;
+        width: 9vw; 
+        order: 1; 
+        align-items: flex-start;
+    }
+
+    /* 4.2 заголовок */
+    .plan-title {
+        position: static;
+        transform: none;
+        left: auto;
+        bottom: auto;
+        
+        text-align: right;
+        order: 3; 
+        align-items: flex-end;
+    }
+
+    /* 4.3 контейнер шагов */
+    .plan-steps-container {
+        position: static;
+        flex-direction: row;
+        justify-content: space-between;
+        order: 2;
+        
+        gap: 2vw;
+    }
+
+    /* 4.4 шаги */
+    .step-item {
+        position: relative;
+        width: auto; 
+        height: auto;
+        display: block;
+        
+        margin: 0 1vw; 
+    }
+
+    /* 4.5 иконки */
+    .step-icon {
+        position: static;
+        transform: none;
+        width: 6.5vw;
+        height: 6.5vw;
+    }
+
+    /* 4.6 подписи */
+    .step-label { 
+        position: absolute;
+        font-size: calc(1.3vw * 3);
+        font-weight: 300; 
+        white-space: nowrap;
+        
+        top: 45%;
+        
+        color: #FFFFFF;
+        background-color: #FF7C40;
+        border-radius: 10vw;
+        padding: 5vw 7vw;
+        
+        opacity: 0;
+        visibility: hidden;
+        z-index: 100;
+    }
+
+    /* 4.7 иконка 1: ядро */
+    .step-item:nth-child(1):hover .step-label {
+        left: 43vw; 
+    }
+
+    /* 4.8 иконка 2: рельеф */
+    .step-item:nth-child(2):hover .step-label {
+        left: 28vw;
+    }
+
+    /* 4.9 иконка 3: флора */
+    .step-item:nth-child(3):hover .step-label {
+        left: 18vw;
+    }
+
+    /* 4.10 иконка 4: запуск */
+    .step-item:nth-child(4):hover .step-label {
+        left: 6vw; 
+    }
+
+    /* 4.11 анимация подписей */
+    @keyframes show-then-hide {
+        0% { 
+            opacity: 0; 
+            visibility: hidden;
+        }
+        35% { 
+            opacity: 1;
+            visibility: visible;
+        }
+        50% { 
+            opacity: 1;
+            visibility: visible;
+        }
+        100% {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+    /* 4.12 длительность анимации при наведении */
+    .step-item:hover .step-label {
+        animation: show-then-hide 2s forwards;
+    }
 }

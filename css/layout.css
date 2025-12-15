@@ -4,18 +4,18 @@
     padding: 0;
 }
 
-/* контейнер 1-й секции */
+/* I. контейнер 1-й секции */
 .poster-container {
     position: relative;
     width: 100vw;
-    min-height: 100vh;
+    height: auto;
     overflow: hidden; 
     background-color: #f4f4f4; 
 }
 
 /* 1. красная плашка */
 .instruction-plaque {
-    position: absolute;
+    position: static;
     top: 0;
     left: 0;
     padding: 1.5vw;
@@ -118,11 +118,11 @@
 
 /* 3. графика */
 .graphics-frame {
-    position: absolute;
+    position: static;
     top: 8vw; 
     left: 0;
     width: 62vw;
-    height: 32.16vw;
+    height: 32vw;
 
     border: 0.1vw solid #000000;
     border-radius: 20vw;
@@ -196,12 +196,12 @@
 /* 3.8 кардры сдвига */
 @keyframes swap-down {
     0% { transform: translateY(0vw); }
-    50% { transform: translateY(7.2vw); }
+    50% { transform: translateY(7vw); }
     100% { transform: translateY(0vw); } 
 }
 @keyframes swap-up {
     0% { transform: translateY(0vw); }
-    50% { transform: translateY(-7.2vw); }
+    50% { transform: translateY(-7vw); }
     100% { transform: translateY(0vw); }
 }
 
@@ -287,6 +287,7 @@
     font-size: 1.3vw;
     white-space: nowrap;
     position: absolute;
+    color: #FFFFFF;
     
     top: 50%; 
     transform: translateY(-50%); 
@@ -549,27 +550,13 @@
         z-index: 100;
     }
 
-    /* 4.7 иконка 1: ядро */
-    .step-item:nth-child(1):hover .step-label {
-        left: 43vw; 
-    }
+    /* 4.7 позиционирование иконок */
+    .step-item:nth-child(1):hover .step-label { left: 43vw; }
+    .step-item:nth-child(2):hover .step-label { left: 28vw; }
+    .step-item:nth-child(3):hover .step-label { left: 18vw; }
+    .step-item:nth-child(4):hover .step-label { left: 6vw; }
 
-    /* 4.8 иконка 2: рельеф */
-    .step-item:nth-child(2):hover .step-label {
-        left: 28vw;
-    }
-
-    /* 4.9 иконка 3: флора */
-    .step-item:nth-child(3):hover .step-label {
-        left: 18vw;
-    }
-
-    /* 4.10 иконка 4: запуск */
-    .step-item:nth-child(4):hover .step-label {
-        left: 6vw; 
-    }
-
-    /* 4.11 анимация подписей */
+    /* 4.8 анимация подписей */
     @keyframes show-then-hide {
         0% { 
             opacity: 0; 
@@ -589,8 +576,58 @@
         }
     }
 
-    /* 4.12 длительность анимации при наведении */
+    /* 4.9 длительность анимации при наведении */
     .step-item:hover .step-label {
         animation: show-then-hide 2s forwards;
     }
 }
+
+
+
+
+
+
+
+/* II. контейнер 2-й секции */
+.step-2-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; 
+    background-color: #f4f4f4; 
+}
+
+/* 1. контейнер бегущей строки */
+.step-header-container {
+    height: 10vw;
+    margin-top: 3.6vw;
+    background-color: #FF4444;
+    overflow: hidden;
+    white-space: nowrap;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* 1.1 текст */
+.marquee-content {
+    font-family: 'Bounded', sans-serif;
+    font-weight: 600; 
+    font-size: 6.8vw;
+    color: #FFFFFF;
+
+    transform: translateY(calc(2%));
+    display: inline-block;
+    /* animation: marquee-scroll 10s linear infinite;*/
+}
+
+/* 1.2 анимация скролла
+@keyframes marquee-scroll {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-100%); 
+    }
+} */

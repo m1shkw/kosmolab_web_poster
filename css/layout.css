@@ -66,6 +66,7 @@
     z-index: 5;
 }
 
+
 /* 2.1. стиль текста */
 .kosmolab-frame div[class^="kosmolab-text"] {
     font-family: 'Bounded', sans-serif;
@@ -114,6 +115,7 @@
     50% { transform: translateX(-74%); }
     100% { transform: translateX(74%); }
 }
+
 
 
 /* 3. графика */
@@ -204,6 +206,8 @@
     50% { transform: translateY(-7vw); }
     100% { transform: translateY(0vw); }
 }
+
+
 
 /* 4. оранж фрейм */
 .assembly-plan {
@@ -597,9 +601,11 @@
     background-color: #f4f4f4; 
 }
 
+
+
 /* 1. контейнер бегущей строки */
 .step-header-container {
-    height: 10vw;
+    height: 8.05vw;
     margin-top: 3.6vw;
     background-color: #FF4444;
     overflow: hidden;
@@ -617,17 +623,208 @@
     font-size: 6.8vw;
     color: #FFFFFF;
 
-    transform: translateY(calc(2%));
     display: inline-block;
-    /* animation: marquee-scroll 10s linear infinite;*/
+    animation: marquee-scroll 2s linear infinite;
 }
 
-/* 1.2 анимация скролла
+/* 1.2 анимация скролла */
 @keyframes marquee-scroll {
-    from {
-        transform: translateX(0%);
-    }
-    to {
-        transform: translateX(-100%); 
-    }
-} */
+    from { transform: translateX(0%) translateY(5%); }
+    to { transform: translateX(-100%) translateY(5%); }
+}
+
+
+
+/* 2. граф плашка с ядрами */
+.core-graphics-frame {
+    margin: 4vw auto;
+    width: 100%;
+    height: 17vw;
+    background-color: #FF7C40; 
+    border-radius: 12vw;
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 5vw;
+}
+
+/* 2.1. контейнер фигур */
+.core-group {
+    position: relative;
+    width: 17vw;
+    height: 17vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2.2. общие стили фигур */
+.shape { position: absolute; }
+
+/* 2.3. магма */
+.group-magma .square {
+    width: 9vw;
+    height: 9vw;
+    background-color: #FF4444;
+    mix-blend-mode: hard-light;
+    left: 0;
+}
+.group-magma .core-circle {
+    width: 9vw;
+    height: 9vw;
+    border-radius: 50%;
+    background-color: #236CFF;
+    mix-blend-mode: plus-lighter;
+    right: 3.5vw;
+}
+
+/* 2.4. газ */
+.group-gas .triangle {
+    border-right: 16vw solid #236CFF;
+    border-bottom: 7vw solid transparent;
+    mix-blend-mode: plus-lighter;
+    right: 3.5vw;
+    bottom: 4vw;
+}
+.group-gas .core-circle {
+    width: 9vw;
+    height: 9vw;
+    border-radius: 50%;
+    background-color: #236CFF;
+    mix-blend-mode: hard-light;
+    left: 4vw;
+}
+
+/* 2.5. атмосфера */
+.group-atmosphere .core-circle {
+    width: 9vw;
+    height: 9vw;
+    border-radius: 50%;
+    background-color: #FF4444;
+    mix-blend-mode: hard-light;
+    left: 6vw;
+}
+.group-atmosphere .ring {
+    width: 12.8vw;
+    height: 12.8vw;
+    border-radius: 50%;
+    border: 3.3vw solid #236CFF; 
+    mix-blend-mode: plus-lighter;
+    left: 4.1vw;
+}
+
+/* 2.6. осадки */
+.group-precipitation .core-circle {
+    width: 9vw;
+    height: 9vw;
+    border-radius: 50%;
+    background-color: #236CFF;
+    mix-blend-mode: plus-lighter;
+    right: 1vw;
+}
+.group-precipitation .dot {
+    width: 3.5vw;
+    height: 3.5vw;
+    border-radius: 50%;
+    background-color: #236CFF;
+    mix-blend-mode: plus-lighter;
+}
+.dot-1 { top: 4vw; left: 6vw; }
+.dot-2 { top: 5vw; right: -1.7vw; }
+.dot-3 { bottom: 1.7vw; left: 4vw; }
+
+
+/* 2.7. стили подписей */
+.core-label {
+    position: absolute;
+    font-family: 'Bounded', sans-serif;
+    font-weight: 300;
+    font-size: 1.3vw;
+    color: #FFFFFF; 
+    white-space: nowrap;
+    z-index: 10; 
+}
+
+/* 2.7.1. подпись 1 магма */
+.group-magma .core-label {
+    top: 1.7vw;
+    left: 0vw;
+}
+
+/* 2.7.2. подпись 2 газ */
+.group-gas .core-label {
+    bottom: 1.7vw;
+    left: -3vw;
+}
+
+/* 2.7.3. подпись 3 атмосфера */
+.group-atmosphere .core-label {
+    left: -5vw;
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+
+/* 2.7.4. подпись 4 осадки */
+.group-precipitation .core-label {
+    top: 1.7vw;
+    right: 0vw;
+}
+
+
+/* 2.8.1 анимация 1 магма */
+@keyframes magma-circle-move {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-5vw); } 
+}
+@keyframes magma-square-move {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5vw); }
+}
+.group-magma .core-circle { animation: magma-circle-move 2s ease-in-out infinite; }
+.group-magma .square { animation: magma-square-move 2s ease-in-out infinite; }
+
+
+/* 2.8.2 анимация 2 газ */
+@keyframes orbit-motion-reverse {
+    0% { transform: rotate(0deg) translateX(0.7vw) rotate(0deg); }
+    100% { transform: rotate(-360deg) translateX(0.7vw) rotate(360deg); }
+}
+@keyframes gas-triangle-move {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2.3vw); }
+}
+.group-gas .core-circle { animation: orbit-motion-reverse 1.8s linear infinite; }
+.group-gas .triangle { animation: gas-triangle-move 2s ease-in-out infinite; }
+
+
+/* 2.8.3 анимация 3 атмосфера */
+@keyframes orbit-motion {
+    0% { transform: rotate(0deg) translateX(0.8vw) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(0.8vw) rotate(-360deg); }
+}
+.group-atmosphere .ring { animation: orbit-motion 1.2s linear infinite; }
+
+
+/* 2.8.4 анимация 4 осадки */
+@keyframes core-orbit-motion {
+    0% { transform: rotate(0deg) translateX(0.5vw) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(0.5vw) rotate(-360deg); }
+}
+@keyframes dot-scatter-1 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-3vw, -1vw); }
+}
+@keyframes dot-scatter-2 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(1.5vw, 0.5vw); }
+}
+@keyframes dot-scatter-3 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(2vw, -1.5vw); }
+}
+.group-precipitation .core-circle { animation: core-orbit-motion 1.5s linear infinite;}
+
+.group-precipitation .dot-1 { animation: dot-scatter-1 1.5s ease-in-out infinite; }
+.group-precipitation .dot-2 { animation: dot-scatter-2 1.2s ease-in-out infinite; }
+.group-precipitation .dot-3 { animation: dot-scatter-3 1.3s ease-in-out infinite; }

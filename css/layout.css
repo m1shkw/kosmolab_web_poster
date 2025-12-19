@@ -78,7 +78,7 @@
 
 /* 2.2. текст kosmolab */
 .kosmolab-text {
-    color: #00BBBB;
+    color: #236CFF;
     position: absolute;
     top: 50%;
     transform: translateY(calc(-45%));
@@ -102,7 +102,7 @@
     position: absolute;
     height: 100%; 
     width: 24vw;
-    background-color: #00BBBB;
+    background-color: #236CFF;
     border-radius: 10vw;
     z-index: 0;
 
@@ -121,12 +121,14 @@
 /* 3. графика */
 .graphics-frame {
     position: static;
-    top: 8vw; 
     left: 0;
     width: 62vw;
     height: 32vw;
 
-    border: 0.1vw solid #000000;
+    top: 8vw; 
+    margin-top: 4vw;
+
+    /* border: 0.1vw solid #000000; */
     border-radius: 20vw;
     
     display: flex;
@@ -150,7 +152,7 @@
     
     25% { background-color: #FF7C40; }
     50% { background-color: #FF4444; }
-    75% { background-color: #00BBBB; }
+    75% { background-color: #236CFF; }
 }
 
 /* 3.3. контейнер стека */
@@ -169,9 +171,10 @@
 /* 3.4. разноцветные элементы */
 .stacked-element { 
     height: 12vw;
-    width: 16vw;
+    width: 30.6vw;
     border-radius: 10vw;
     margin-top: -3.7vw;
+    margin-left: -4.3vw;
     
     mix-blend-mode: multiply;
 
@@ -187,7 +190,7 @@
 .stack-orange { background-color: #FF7C40; }
 .stack-blue { background-color: #236CFF; }
 .stack-red { background-color: #FF4444; }
-.stack-teal { background-color: #00BBBB; }
+.stack-teal { background-color: #236CFF; }
 
 /* 3.7. анимация по парам */
 .stack-orange { animation-name: swap-down; } 
@@ -213,6 +216,7 @@
 .assembly-plan {
     position: absolute;
     top: 8.06vw; 
+    margin-top: 4vw;
     right: 0%;
     width: 38vw;
     height: 32vw; 
@@ -353,7 +357,7 @@
 
     /* 2.2. текст kosmolab */
     .kosmolab-text {
-        color: #00BBBB;
+        color: #236CFF;
         position: static;
         top: 50%;
         transform: translateY(calc(-45%));
@@ -378,7 +382,7 @@
         position: absolute; 
         width: 40vw;
         height: 100%;
-        background-color: #00BBBB;
+        background-color: #236CFF;
         border-radius: 10vw;
         top: 0;
         bottom: 0;
@@ -404,8 +408,9 @@
         width: 100%;
         height: auto;
         transform: translateY(-0.3%);
+        margin-top: 5vw;
         
-        border: 0.1vw solid #000000;
+        /* border: 0.1vw solid #000000; */
         border-radius: 50vw;
         
         display: flex;
@@ -436,8 +441,9 @@
     /* 3.4. разноцветные элементы */
     .stacked-element { 
         height: 16vw;
-        width: 22vw;
+        width: 50vw;
         border-radius: 10vw;
+        margin-left: -1vw;
         
         mix-blend-mode: multiply;
 
@@ -478,7 +484,7 @@
         width: 100%; 
         height: auto;
         right: auto;
-        transform: translateY(-0.7%);
+        margin-top: 5vw;
         
         background-color: #FF7C40; 
         
@@ -832,6 +838,7 @@
 
     /* 2. оранж плашка */
     .core-graphics-frame {
+        position: relative;
         width: 100%;
         height: 85vw;
         border-radius: 100vw;
@@ -839,7 +846,6 @@
         padding: 0;
         justify-content: flex-start;
         overflow: hidden;
-        position: relative;
     }
 
     /* 2.1 контейнер групп */
@@ -889,7 +895,12 @@
     }
     .group-atmosphere .core-circle { top: 18vw; left: 30vw; }
 
-    .group-precipitation .core-circle { top: 18vw; left: 30vw; }
+    .group-precipitation .core-circle {
+        top: 18vw;
+        left: 30vw;
+        background-color: #FFFFFF;
+        mix-blend-mode: soft-light;
+    }
     .group-precipitation .dot {
         width: 16vw;
         height: 16vw;
@@ -940,7 +951,7 @@
         50% { transform: translateY(-8vw); } 
     }
 
-    /* Атмосфера: увеличиваем радиус орбиты */
+    /* атмосфера */
     @keyframes orbit-motion {
         0% { transform: rotate(0deg) translateX(3vw) rotate(0deg); }
         100% { transform: rotate(360deg) translateX(3vw) rotate(-360deg); }
@@ -950,7 +961,7 @@
         100% { transform: rotate(-360deg) translateX(2vw) rotate(360deg); }
     }
 
-    /* Осадки: более широкий разлет капель */
+    /* осадки */
     @keyframes dot-scatter-1 {
         0%, 100% { transform: translate(0, 0); }
         50% { transform: translate(-10vw, -5vw); }
@@ -964,15 +975,10 @@
         50% { transform: translate(12vw, -8vw); }
     }
 
-    /* --- 2. КОРРЕКТИРУЕМ ТАЙМИНГИ И ПАРАМЕТРЫ ГРУПП --- */
-
-    /* Ускоряем вращение в атмосфере, чтобы оно было энергичнее */
     .group-atmosphere .ring { animation: orbit-motion 1s linear infinite; }
     .group-atmosphere .core-circle { animation: orbit-motion-reverse 1.2s linear infinite; }
 
-    /* Делаем перелистывание страниц (слайдер) более "упругим" */
     .core-group {
-        /* Изменяем cubic-bezier на более агрессивный: резкий старт и очень мягкий докат */
         animation: mobile-paging 10s cubic-bezier(0.85, 0, 0.15, 1) infinite;
     }
 }

@@ -159,8 +159,7 @@
 .stack-frame-container {
     position: absolute;
     left: 36vw;
-    
-    height: 32vw;
+    height: auto;
     
     display: flex;
     flex-direction: column;
@@ -170,11 +169,11 @@
 
 /* 3.4. разноцветные элементы */
 .stacked-element { 
-    height: 12vw;
-    width: 30.6vw;
+    height: 13.1vw;
+    width: 30vw;
     border-radius: 10vw;
     margin-top: -3.7vw;
-    margin-left: -4.3vw;
+    margin-left: -4vw;
     
     mix-blend-mode: multiply;
 
@@ -182,32 +181,37 @@
 }
 
 /* 3.5. 1-й элемент без отступа */
-.stacked-element:first-child {
-    margin-top: 0;
-}
+.stacked-element:first-child { margin-top: 0; }
 
 /* 3.6. цвета элементов */
 .stack-orange { background-color: #FF7C40; }
 .stack-blue { background-color: #236CFF; }
 .stack-red { background-color: #FF4444; }
-.stack-teal { background-color: #236CFF; }
 
 /* 3.7. анимация по парам */
-.stack-orange { animation-name: swap-down; } 
-.stack-blue { animation-name: swap-up; } 
-.stack-red { animation-name: swap-down; }
-.stack-teal { animation-name: swap-up; }
+.stack-orange { animation-name: stack-top-move; } 
+.stack-blue { animation-name: stack-middle-move; } 
+.stack-red { animation-name: stack-bottom-move; }
 
 /* 3.8 кардры сдвига */
-@keyframes swap-down {
-    0% { transform: translateY(0vw); }
-    50% { transform: translateY(7vw); }
-    100% { transform: translateY(0vw); } 
+/* верхняя оранж */
+@keyframes stack-top-move {
+    0%, 100% { transform: translateY(0); }
+    25%      { transform: translateY(9.3vw); } 
+    50%, 95% { transform: translateY(0); }
 }
-@keyframes swap-up {
-    0% { transform: translateY(0vw); }
-    50% { transform: translateY(-7vw); }
-    100% { transform: translateY(0vw); }
+/* средняя синяя */
+@keyframes stack-middle-move {
+    0%, 100% { transform: translateY(0); }
+    25%      { transform: translateY(-9.3vw); } 
+    50%      { transform: translateY(0); }      
+    75%      { transform: translateY(9.3vw); } 
+}
+/* нижняя красная */
+@keyframes stack-bottom-move {
+    0%, 50%  { transform: translateY(0); }
+    75%      { transform: translateY(-9.3vw); }
+    100%     { transform: translateY(0); }
 }
 
 
@@ -311,10 +315,212 @@
 
 
 
-/* мобильная адаптивность 1-й секции */
-@media screen and (max-width: 768px) {
+/* планшетная адаптивность 1-й секции */
+@media screen and (max-width: 1000px) {
 
-    /* 0. шрифты */
+    /* 0. высота контейнера 1-й секции / таб */
+    .poster-container {
+        height: auto; 
+        min-height: 68vw; 
+    }
+
+
+
+    /* 1. красная плашка / таб */
+    .instruction-plaque {
+        position: static;
+        width: 100%;
+        padding: 3vw 3vw;
+        flex-direction: row;
+        gap: 1vw;
+    }
+    .instruction-plaque span {
+        font-size: 3.1vw;
+    }
+    .plaque-line-2 { margin-left: 0; }
+
+
+
+    /* 2. плашка kosmolab / таб */
+    .kosmolab-frame {
+        position: relative;
+        left: 0;
+        width: 100%;
+        height: 12vw;
+        display: flex;
+        align-items: center;
+    }
+
+    /* 2.1. текст kosmolab / таб */
+    .kosmolab-text {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 4vw;
+        transform: translateY(calc(-47%));
+    }
+    .kosmolab-text span {
+        font-family: 'Bounded', sans-serif;
+        font-weight: 600;
+        font-size: 10vw;
+    }
+
+    /* 2.2. маленькая плашка блендинг / таб */
+    .kosmolab-moving-plaque {
+        position: absolute; 
+        width: 40vw;
+        height: 100%;
+        background-color: #236CFF;
+        border-radius: 10vw;
+        top: 0;
+        bottom: 0;
+        z-index: 0;
+        
+        animation: slide-kosmolab 2.7s infinite linear alternate;
+    }
+
+    /* 2.3. анимация плашки / таб */
+    @keyframes slide-kosmolab {
+        0% { transform: translateX(78%); }
+        50% { transform: translateX(-78%); }
+        100% { transform: translateX(78%); }
+    }
+    
+
+
+    /* 3. большой круг / таб */
+    .large-circle {
+        width: 42vw;
+        height: 42vw; 
+    }
+
+    
+
+    /* 4. разноцветные элементы / таб */
+    .stacked-element { 
+        height: 16.5vw;
+        width: 27.6vw;
+        border-radius: 20vw;
+        margin-left: 46%;
+        
+        mix-blend-mode: multiply;
+    }
+
+    /* 3.5. 1-й элемент без отступа / таб */
+    .stacked-element:first-child { margin-top: 0; }
+
+    /* 3.6. анимация по парам / таб */
+    .stack-orange { animation-name: stack-top-move; } 
+    .stack-blue { animation-name: stack-middle-move; } 
+    .stack-red { animation-name: stack-bottom-move; }
+
+    /* 3.7 кардры сдвига / таб */
+    /* верхняя оранж */
+    @keyframes stack-top-move {
+        0%, 100% { transform: translateY(0); }
+        25%      { transform: translateY(12.3vw); } 
+        50%, 95% { transform: translateY(0); }
+    }
+    /* средняя синяя */
+    @keyframes stack-middle-move {
+        0%, 100% { transform: translateY(0); }
+        25%      { transform: translateY(-12.3vw); } 
+        50%      { transform: translateY(0); }      
+        75%      { transform: translateY(12.3vw); } 
+    }
+    /* нижняя красная */
+    @keyframes stack-bottom-move {
+        0%, 50%  { transform: translateY(0); }
+        75%      { transform: translateY(-12.3vw); }
+        100%     { transform: translateY(0); }
+    }
+
+
+
+
+    /* 4. оранж фрейм / таб */
+    .assembly-plan {
+        position: absolute;
+        width: 30vw;
+        height: 42vw; 
+        margin-top: 18vw;
+        right: 0%;
+    } 
+    .plan-logo { width: 6.5vw; top: 4vw; }
+    .plan-title { font-size: 3vw; bottom: 4vw; }
+
+    /* 4.3 контейнер шагов / таб */
+    .plan-steps-container {
+        padding: 4vw;
+    }
+
+    /* 4.5 иконки / таб */
+    .step-icon {
+        position: absolute;
+        width: 3.4vw; 
+        height: 3.4vw;
+
+        margin-top: -1vw;
+    }
+
+    /* 4.6 подписи / таб */
+    .step-label { 
+        position: absolute;
+        bottom: 3.5vw; 
+        left: 50%;
+        transform: translateX(-50%);
+
+        font-size: 2.5vw;
+        font-weight: 300;
+        color: #FFFFFF;
+        white-space: nowrap;
+        
+        background-color: #FF7C40; 
+        padding: 5vw 4vw;
+        border-radius: 5vw;
+        
+        opacity: 0;
+        visibility: hidden;
+        z-index: 10;
+    }
+
+    /* 4.7 позиционирование подписей / таб */
+    .step-item:nth-child(1):hover .step-label { left: 11.2vw; top: 16.9vw; }
+    .step-item:nth-child(2):hover .step-label { left: 3.6vw; top: 12vw; }
+    .step-item:nth-child(3):hover .step-label { left: 11.5vw; top: 7.3vw; }
+    .step-item:nth-child(4):hover .step-label { left: 3.5vw; top: 2.3vw; }
+
+    /* 4.8 анимация подписей / таб */
+    @keyframes show-then-hide {
+        0% { opacity: 0; visibility: hidden; }
+        35% { opacity: 1; visibility: visible; }
+        50% { opacity: 1; visibility: visible; }
+        100% { opacity: 0; visibility: hidden; }
+    }
+    
+    /* 4.9 длительность анимации подписей / таб */
+    .step-item:hover .step-label {
+        animation: show-then-hide 2s ease-in-out; 
+    }
+
+    /* 4.10 анимация заголовка / таб */
+    @keyframes hide-then-show {
+        0% { opacity: 1; visibility: visible; }
+        15% { opacity: 0; visibility: hidden; } 
+        85% { opacity: 0; visibility: hidden; } 
+        100% { opacity: 1; visibility: visible; }
+    }
+
+    /* 4.11 длительность анимации заголовка / таб */
+    .assembly-plan:has(.step-item:hover) .plan-title {
+        animation: hide-then-show 2s ease-in-out;
+    }
+}
+
+/* мобильная адаптивность 1-й секции */
+@media screen and (max-width: 700px) {
+
+    /* 0. шрифты / тел */
     .instruction-plaque span {
         font-size: calc(2vw * 2.5); 
         line-height: 1.25;
@@ -328,18 +534,19 @@
 
 
 
-
-
-    /* 1. красная плашка */
+    /* 1. красная плашка / тел */
     .instruction-plaque {
         position: static; 
         width: 100%;
+        height: auto;
+        flex-direction: column;
         padding: 2.3vw;
         padding-left: 2.3vw;
     }
     
 
-    /* 2. плашка kosmolab */
+
+    /* 2. плашка kosmolab / тел */
     .kosmolab-frame {
         position: relative; 
         width: 100%;
@@ -355,15 +562,21 @@
         z-index: 5;
     }
 
-    /* 2.2. текст kosmolab */
+    /* 2.1. текст kosmolab / тел */
     .kosmolab-text {
-        color: #236CFF;
-        position: static;
-        top: 50%;
-        transform: translateY(calc(-45%));
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 4vw;
+        transform: translateY(calc(-47%));
+    }
+    .kosmolab-text span {
+        font-family: 'Bounded', sans-serif;
+        font-weight: 600;
+        font-size: calc(6.8vw * 1.8);
     }
 
-    /* 2.3. блендинг-слой */
+    /* 2.2. блендинг-слой / тел */
     .kosmolab-blend-layer {
         position: absolute;
         width: 100%;
@@ -377,7 +590,7 @@
         mix-blend-mode: difference;
     }
     
-    /* 2.4. маленькая плашка блендинг */
+    /* 2.3. маленькая плашка блендинг / тел */
     .kosmolab-moving-plaque {
         position: absolute; 
         width: 40vw;
@@ -391,7 +604,7 @@
         animation: slide-kosmolab 2.7s infinite linear alternate;
     }
 
-    /* 2.5. анимация плашки */
+    /* 2.4. анимация плашки / тел */
     @keyframes slide-kosmolab {
         0% { transform: translateX(78%); }
         50% { transform: translateX(-78%); }
@@ -402,7 +615,7 @@
 
 
 
-    /* 3. графика */
+    /* 3. графика / тел */
     .graphics-frame {
         position: static; 
         width: 100%;
@@ -416,7 +629,7 @@
         display: flex;
     }
     
-    /* 3.1. большой круг */
+    /* 3.1. большой круг / тел */
     .large-circle {
         position: static;
         width: 100vw;
@@ -426,11 +639,11 @@
         mix-blend-mode: multiply;
     }
     
-    /* 3.3. контейнер стека */
+    /* 3.3. контейнер стека / тел */
     .stack-frame-container {
         position: static;
         width: 100%;
-        height: 50vw; 
+        height: auto; 
         
         display: flex;
         flex-direction: column;
@@ -438,11 +651,11 @@
         justify-content: flex-start;
     }
 
-    /* 3.4. разноцветные элементы */
+    /* 3.4. разноцветные элементы / тел */
     .stacked-element { 
-        height: 16vw;
-        width: 50vw;
-        border-radius: 10vw;
+        height: 19vw;
+        width: 49vw;
+        border-radius: 20vw;
         margin-left: -1vw;
         
         mix-blend-mode: multiply;
@@ -450,27 +663,33 @@
         animation: 3s infinite ease-in-out;
     }
 
-    /* 3.5. 1-й элемент без отступа */
-    .stacked-element:first-child {
-        margin-top: 0;
-    }
+    /* 3.5. 1-й элемент без отступа / тел */
+    .stacked-element:first-child { margin-top: 0; }
 
-    /* 3.7. анимация по парам */
-    .stack-orange { animation-name: swap-down; } 
-    .stack-blue { animation-name: swap-up; } 
-    .stack-red { animation-name: swap-down; }
-    .stack-teal { animation-name: swap-up; }
+    /* 3.6. анимация по парам / тел */
+    .stack-orange { animation-name: stack-top-move; } 
+    .stack-blue { animation-name: stack-middle-move; } 
+    .stack-red { animation-name: stack-bottom-move; }
 
-    /* 3.8 кардры сдвига */
-    @keyframes swap-down {
-        0% { transform: translateY(0vw); }
-        50% { transform: translateY(11.65vw); }
-        100% { transform: translateY(0vw); } 
+    /* 3.7 кардры сдвига / тел */
+    /* верхняя оранж */
+    @keyframes stack-top-move {
+        0%, 100% { transform: translateY(0); }
+        25%      { transform: translateY(15vw); } 
+        50%, 95% { transform: translateY(0); }
     }
-    @keyframes swap-up {
-        0% { transform: translateY(0vw); }
-        50% { transform: translateY(-11.65vw); }
-        100% { transform: translateY(0vw); }
+    /* средняя синяя */
+    @keyframes stack-middle-move {
+        0%, 100% { transform: translateY(0); }
+        25%      { transform: translateY(-15vw); } 
+        50%      { transform: translateY(0); }      
+        75%      { transform: translateY(16vw); } 
+    }
+    /* нижняя красная */
+    @keyframes stack-bottom-move {
+        0%, 50%  { transform: translateY(0); }
+        75%      { transform: translateY(-15vw); }
+        100%     { transform: translateY(0); }
     }
 
 
@@ -478,7 +697,7 @@
 
 
     
-    /* 4. оранжевый фрейм */
+    /* 4. оранжевый фрейм / тел */
     .assembly-plan {
         position: static; 
         width: 100%; 
@@ -494,7 +713,7 @@
         padding: 4.5vw 6vw;
     }
     
-    /* 4.1 логотип */
+    /* 4.1 логотип / тел */
     .plan-logo {
         position: static; 
         transform: none;
@@ -503,39 +722,41 @@
         align-items: flex-start;
     }
 
-    /* 4.2 заголовок */
+    /* 4.2 заголовок / тел */
     .plan-title {
         position: static;
-        transform: none;
+        transform:translateY(2vw);
         left: auto;
         bottom: auto;
         
         text-align: right;
+        z-index: 1;
         order: 3; 
         align-items: flex-end;
     }
 
-    /* 4.3 контейнер шагов */
+    /* 4.3 контейнер шагов / тел */
     .plan-steps-container {
         position: static;
         flex-direction: row;
         justify-content: space-between;
         order: 2;
-        
+
+        z-index: 2;
         gap: 2vw;
     }
 
-    /* 4.4 шаги */
+    /* 4.4 шаги / тел */
     .step-item {
         position: relative;
         width: auto; 
         height: auto;
         display: block;
-        
+        transform: translateY(1vw);
         margin: 0 1vw; 
     }
 
-    /* 4.5 иконки */
+    /* 4.5 иконки / тел */
     .step-icon {
         position: static;
         transform: none;
@@ -543,7 +764,7 @@
         height: 6.5vw;
     }
 
-    /* 4.6 подписи */
+    /* 4.6 подписи / тел */
     .step-label { 
         position: absolute;
         font-size: calc(1.3vw * 3);
@@ -555,20 +776,20 @@
         color: #FFFFFF;
         background-color: #FF7C40;
         border-radius: 10vw;
-        padding: 5vw 7vw;
+        padding: 6vw 7vw;
         
         opacity: 0;
         visibility: hidden;
         z-index: 100;
     }
 
-    /* 4.7 позиционирование иконок */
-    .step-item:nth-child(1):hover .step-label { left: 43vw; }
-    .step-item:nth-child(2):hover .step-label { left: 28vw; }
-    .step-item:nth-child(3):hover .step-label { left: 18vw; }
-    .step-item:nth-child(4):hover .step-label { left: 6vw; }
+    /* 4.7 позиционирование подписей / тел */
+    .step-item:nth-child(1):hover .step-label { left: 59vw; top: -5vw; }
+    .step-item:nth-child(2):hover .step-label { left: 36vw; top: -5vw; }
+    .step-item:nth-child(3):hover .step-label { left: 38vw; top: -5vw; }
+    .step-item:nth-child(4):hover .step-label { left: 15vw; top: -5vw; }
 
-    /* 4.8 анимация подписей */
+    /* 4.8 анимация подписей / тел */
     @keyframes show-then-hide {
         0% { opacity: 0; visibility: hidden; }
         35% { opacity: 1; visibility: visible; }
@@ -576,9 +797,22 @@
         100% { opacity: 0; visibility: hidden; }
     }
 
-    /* 4.9 длительность анимации при наведении */
+    /* 4.9 длительность анимации подписей / тел */
     .step-item:hover .step-label {
-        animation: show-then-hide 2s forwards;
+        animation: show-then-hide 2s ease-in-out; 
+    }
+
+    /* 4.10 анимация заголовка / тел */
+    @keyframes hide-then-show {
+        0% { opacity: 1; visibility: visible; }
+        15% { opacity: 0; visibility: hidden; } 
+        85% { opacity: 0; visibility: hidden; } 
+        100% { opacity: 1; visibility: visible; }
+    }
+
+    /* 4.11 длительность анимации заголовка / тел */
+    .assembly-plan:has(.step-item:hover) .plan-title {
+        animation: hide-then-show 2s ease-in-out;
     }
 }
 
@@ -820,23 +1054,214 @@
     50% { transform: translate(2vw, -1.5vw); }
 }
 .group-precipitation .core-circle { animation: core-orbit-motion 1.5s linear infinite;}
-
 .group-precipitation .dot-1 { animation: dot-scatter-1 1.5s ease-in-out infinite; }
 .group-precipitation .dot-2 { animation: dot-scatter-2 1.2s ease-in-out infinite; }
 .group-precipitation .dot-3 { animation: dot-scatter-3 1.3s ease-in-out infinite; }
 
 
-/* мобильная адаптивность 2-й секции */
-@media (max-width: 768px) {
+/* планшетная адаптивность 2-й секции */
+@media (max-width: 1000px) {
+    
+    /* 1. бегущая строка / таб */
+    .step-header-container {
+        height: 12vw; 
+        margin-top: 5vw;
+    }
+    .marquee-content { font-size: 10vw; }
 
-    /* 1. бегущая строка */
+
+
+    /* 2. оранж плашка / таб */
+    .core-graphics-frame {
+        position: relative;
+        width: 100%;
+        height: 42vw;
+        border-radius: 30vw;
+        margin: 5vw 0;
+        display: flex;
+        overflow: hidden;
+        justify-content: flex-start;
+    }
+
+    /* 2.1 контейнер групп / таб */
+    .core-group {
+        min-width: 50%; 
+        height: 100%;
+        flex-shrink: 0;
+        position: relative;
+        
+        animation: tablet-paging 4s cubic-bezier(0.85, 0.15, 0.15, 0.85) infinite;
+    }
+
+    .group-magma .square, .group-magma .core-circle,
+    .group-gas .core-circle, .group-atmosphere .core-circle,
+    .group-precipitation .core-circle {
+        width: 22vw;
+        height: 22vw;
+    }
+
+    /* 2.2 магма / таб */
+    .group-magma .square { top: 10vw; left: 9vw; }
+    .group-magma .core-circle {
+        top: 10vw;
+        right: 5vw;
+        
+        background-color: #FFFFFF;
+        mix-blend-mode: soft-light;
+    }
+
+    /* 2.3 газ / таб */
+    .group-gas .triangle {
+        border-right: 38vw solid #FFFFFF;
+        border-bottom: 15vw solid transparent;
+        right: 5vw;
+        bottom: 12vw;
+    }
+    .group-gas .core-circle { top: 9vw; left: 15vw; }
+
+    /* 2.4 атмосфера / таб */
+    .group-atmosphere .ring {
+        top: 6.8vw;
+        left: 14.8vw;
+        width: 28vw;
+        height: 28vw;
+        border-width: 7vw;
+
+        border-color: #FFFFFF;
+        mix-blend-mode: soft-light;
+    }
+    .group-atmosphere .core-circle { top: 10vw; left: 16.7vw; }
+
+    /* 2.5 осадки / таб */
+    .group-precipitation .core-circle {
+        top: 10vw;
+        left: 11.5vw;
+
+        background-color: #FFFFFF;
+        mix-blend-mode: soft-light;
+    }
+    .group-precipitation .dot {
+        width: 8.5vw;
+        height: 8.5vw;
+
+        background-color: #FFFFFF;
+        mix-blend-mode: soft-light;
+    }
+    .dot-1 { top: 10vw; left: 9vw; }
+    .dot-2 { top: 14vw; right: 4vw; }
+    .dot-3 { bottom: 5vw; left: 4vw; }
+
+
+
+
+    /* 3 подписи / таб */
+    .core-label {
+        font-size: 2.5vw;
+        bottom: 4vw !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        white-space: nowrap;
+    }
+
+    /* 3.6.1. подпись 1 магма */
+    .group-magma .core-label {
+        top: 4vw;
+        right: -2vw;
+    }
+    /* 3.6.2. подпись 2 газ */
+    .group-gas .core-label {
+        bottom: 1.7vw;
+        right: -10vw;
+    }
+    /* 3.6.3. подпись 3 атмосфера */
+    .group-atmosphere .core-label {
+        left: 4vw !important; 
+        top: 50% !important;
+        transform: translateY(-50%) rotate(-90deg) !important;
+    }
+    /* 3.6.4. подпись 4 осадки */
+    .group-precipitation .core-label {
+        top: 4vw;
+        right: 10vw;
+    }
+
+
+
+    /* 4. анимация перелистывания / таб */
+    @keyframes tablet-paging {
+        0%, 45% { transform: translateX(0%); }
+        55%, 90% { transform: translateX(-200%); }
+        100% { transform: translateX(0%); }
+    }
+
+
+    
+    /* 4.1 магма анимация / таб */
+    @keyframes magma-circle-move {
+        0%, 100% { transform: translateX(0) scale(1); }
+        50% { transform: translateX(-10vw) scale(1); } 
+    }
+    @keyframes magma-square-move {
+        0%, 100% { transform: translateX(0) scale(1); }
+        50% { transform: translateX(10vw) scale(1); } 
+    }
+    .group-magma .core-circle { animation: magma-circle-move 2s ease-in-out infinite; }
+    .group-magma .square { animation: magma-square-move 2s ease-in-out infinite; }
+
+    /* 4.2 газ анимация / таб */
+    @keyframes gas-triangle-move {
+        0%, 100% { transform: translateY(2vw); }
+        50% { transform: translateY(-6vw); } 
+    }
+    .group-gas .core-circle { animation: orbit-motion-reverse 1.8s linear infinite; }
+    .group-gas .triangle { animation: gas-triangle-move 2s ease-in-out infinite; }
+
+    /* 4.3 атмосфера анимация / таб */
+    @keyframes orbit-motion {
+        0% { transform: rotate(0deg) translateX(2vw) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(2vw) rotate(-360deg); }
+    }
+    @keyframes orbit-motion-reverse {
+        0% { transform: rotate(0deg) translateX(2vw) rotate(0deg); }
+        100% { transform: rotate(-360deg) translateX(2vw) rotate(360deg); }
+    }
+    .group-atmosphere .ring { animation: orbit-motion 1s linear infinite; }
+
+    /* 4.4 осадки анимация / таб */
+    @keyframes core-orbit-motion {
+        0% { transform: rotate(0deg) translateX(0.5vw) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(0.5vw) rotate(-360deg); }
+    }
+    @keyframes dot-scatter-1 {
+        0%, 100% { transform: translate(0, 0); }
+        50% { transform: translate(-5vw, -2vw); }
+    }
+    @keyframes dot-scatter-2 {
+        0%, 100% { transform: translate(0, 0); }
+        50% { transform: translate(4vw, 3vw); }
+    }
+    @keyframes dot-scatter-3 {
+        0%, 100% { transform: translate(0, 0); }
+        50% { transform: translate(6vw, -5vw); }
+    }
+    .group-precipitation .core-circle { animation: orbit-motion 1.2s linear infinite;}
+    .group-precipitation .dot-1 { animation: dot-scatter-1 1.5s ease-in-out infinite; }
+    .group-precipitation .dot-2 { animation: dot-scatter-2 1.2s ease-in-out infinite; }
+    .group-precipitation .dot-3 { animation: dot-scatter-3 1s ease-in-out infinite; }
+
+}
+
+/* мобильная адаптивность 2-й секции */
+@media (max-width: 700px) {
+
+    /* 1. бегущая строка / тел */
     .step-header-container {
         height: 16.1vw; 
         margin-top: 5vw;
     }
     .marquee-content { font-size: calc(6.8vw * 1.8); }
 
-    /* 2. оранж плашка */
+    /* 2. оранж плашка / тел */
     .core-graphics-frame {
         position: relative;
         width: 100%;
@@ -848,15 +1273,15 @@
         overflow: hidden;
     }
 
-    /* 2.1 контейнер групп */
+    /* 2.1 контейнер групп / тел */
     .core-group {
         min-width: 100%;
         height: 100%;
         flex-shrink: 0;
         
-        animation: mobile-paging 12s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+        animation: mobile-paging 12s cubic-bezier(0.85, 0, 0.15, 1) infinite;
     }
-    
+
     .group-magma .square, .group-magma .core-circle,
     .group-gas .core-circle, .group-atmosphere .core-circle,
     .group-precipitation .core-circle {
@@ -864,6 +1289,7 @@
         height: 40vw;
     }
 
+    /* 2.2 магма / тел */
     .group-magma .square { top: 21vw; left: 15vw; }
     .group-magma .core-circle {
         top: 21vw;
@@ -873,6 +1299,7 @@
         mix-blend-mode: soft-light;
     }
 
+    /* 2.3 газ / тел */
     .group-gas .triangle {
         border-right: 60vw solid #FFFFFF;
         border-bottom: 30vw solid transparent;
@@ -883,6 +1310,7 @@
     }
     .group-gas .core-circle { top: 18vw; left: 30vw; }
 
+    /* 2.4 атмосфера / тел */
     .group-atmosphere .ring {
         top: 13.3vw;
         width: 50vw;
@@ -892,9 +1320,14 @@
 
         border-color: #FFFFFF;
         mix-blend-mode: soft-light;
+        animation: orbit-motion 1s linear infinite;
     }
-    .group-atmosphere .core-circle { top: 18vw; left: 30vw; }
+    .group-atmosphere .core-circle {
+        top: 18vw;
+        left: 30vw;
+    }
 
+    /* 2.5 осадки / тел */
     .group-precipitation .core-circle {
         top: 18vw;
         left: 30vw;
@@ -912,7 +1345,7 @@
     .dot-2 { top: 20vw; right: 15vw; }
     .dot-3 { bottom: 20vw; left: 23vw; }
 
-    /* 2.3 подписи */
+    /* 2.6 подписи / тел */
     .core-label {
         font-size: calc(1.3vw * 3);
         font-weight: 300; 
@@ -923,7 +1356,7 @@
         transform: translateX(-50%) rotate(0deg) !important;
     }
 
-    /* 3. анимация перелистывания */
+    /* 3. анимация перелистывания / тел */
     @keyframes mobile-paging {
         0%, 20% { transform: translateX(0%); }
         25%, 45% { transform: translateX(-100%); }
@@ -933,9 +1366,7 @@
     }
 
 
-    /* анимация фигур */
-
-    /* магма */
+    /* магма анимация / тел */
     @keyframes magma-circle-move {
         0%, 100% { transform: translateX(0) scale(1); }
         50% { transform: translateX(-15vw) scale(1); } 
@@ -945,13 +1376,13 @@
         50% { transform: translateX(15vw) scale(1); } 
     }
 
-    /* газ */
+    /* газ анимация / тел */
     @keyframes gas-triangle-move {
         0%, 100% { transform: translateY(0); }
         50% { transform: translateY(-8vw); } 
     }
 
-    /* атмосфера */
+    /* атмосфера анимация / тел */
     @keyframes orbit-motion {
         0% { transform: rotate(0deg) translateX(3vw) rotate(0deg); }
         100% { transform: rotate(360deg) translateX(3vw) rotate(-360deg); }
@@ -961,7 +1392,7 @@
         100% { transform: rotate(-360deg) translateX(2vw) rotate(360deg); }
     }
 
-    /* осадки */
+    /* осадки анимация / тел */
     @keyframes dot-scatter-1 {
         0%, 100% { transform: translate(0, 0); }
         50% { transform: translate(-10vw, -5vw); }
@@ -973,12 +1404,5 @@
     @keyframes dot-scatter-3 {
         0%, 100% { transform: translate(0, 0); }
         50% { transform: translate(12vw, -8vw); }
-    }
-
-    .group-atmosphere .ring { animation: orbit-motion 1s linear infinite; }
-    .group-atmosphere .core-circle { animation: orbit-motion-reverse 1.2s linear infinite; }
-
-    .core-group {
-        animation: mobile-paging 10s cubic-bezier(0.85, 0, 0.15, 1) infinite;
     }
 }

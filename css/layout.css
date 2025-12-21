@@ -447,7 +447,7 @@
         right: 0%;
     } 
     .plan-logo { width: 6.5vw; top: 4vw; }
-    .plan-title { font-size: 3vw; bottom: 4vw; }
+    .plan-title { font-size: 2.8vw; bottom: 4vw; }
 
     /* 4.3 контейнер шагов / таб */
     .plan-steps-container {
@@ -822,16 +822,15 @@
 
 
 
+
 /* II. контейнер 2-й секции */
 .step-2-container {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    height: auto;
     overflow: hidden; 
     background-color: #f4f4f4; 
 }
-
-
 
 /* 1. контейнер бегущей строки */
 .step-header-container {
@@ -1256,7 +1255,7 @@
 
     /* 1. бегущая строка / тел */
     .step-header-container {
-        height: 16.1vw; 
+        height: 16.1vw !important;
         margin-top: 5vw;
     }
     .marquee-content { font-size: calc(6.8vw * 1.8); }
@@ -1355,6 +1354,11 @@
         right: auto !important;
         transform: translateX(-50%) rotate(0deg) !important;
     }
+    .group-atmosphere .core-label {
+        top: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) rotate(0deg) !important;
+    }
 
     /* 3. анимация перелистывания / тел */
     @keyframes mobile-paging {
@@ -1405,4 +1409,401 @@
         0%, 100% { transform: translate(0, 0); }
         50% { transform: translate(12vw, -8vw); }
     }
+}
+
+
+
+
+
+
+
+
+/* III. контейнер 3-й секции */
+.step-3-container {
+    position: relative;
+    width: 100vw;
+    height: auto;
+    overflow: hidden; 
+    background-color: #f4f4f4; 
+}
+
+/* 1. контейнер бегущей строки + таба */
+.step-header-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* 1.1. левая бегущая строка */
+.marquee-blue {
+    flex-grow: 1; 
+    background-color: #236CFF;
+    border-radius: 0 10vw 10vw 0;
+    height: 8.05vw;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    
+    margin-top: 0vw;
+    padding-top: 1vw;
+}
+
+/* 1.2. анимация скролла */
+.marquee-blue .marquee-content {
+    animation: marquee-scroll-reverse 2.3s linear infinite;
+    color: #FFFFFF;
+}
+@keyframes marquee-scroll-reverse {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0%); }
+}
+
+
+/* 2. правый экшн фрейм */
+.action-tab {
+    height: 8.05vw;
+    border: 0.1vw solid #000000;
+    border-radius: 10vw;
+    
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 3vw; 
+    position: relative;
+    min-width: 30vw;
+}
+
+/* 2.1 заголовок в табе */
+.action-text {
+    font-family: 'Bounded', sans-serif;
+    font-weight: 500; 
+    font-size: 2vw;
+    color: #000000;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+/* 2.2 синий круг внутри таба */
+.action-circle {
+    width: 8.05vw;
+    height: 8.05vw;
+    background-color: #236CFF;
+    border-radius: 100%;
+    
+    position: absolute;
+    right: 0vw; 
+    top: -0.1vw;
+    mix-blend-mode: multiply;
+    animation: color-cycle 3s infinite step-end;
+}
+
+/* 2.3. анимация круга */
+@keyframes color-cycle {
+    0%, 100% { background-color: #236CFF; } 
+    
+    25% { background-color: #FF7C40; }
+    50% { background-color: #FF4444; }
+    75% { background-color: #236CFF; }
+}
+
+
+
+/* 3. контейнер инструментов + 2х фреймов с рельефом */
+.step-3-main-content {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: flex-start; 
+    margin-top: 3.6vw ;
+}
+
+/* 3.1 фрейм с инструментами */
+.tools-circle-frame {
+    width: 32vw;
+    height: 32vw;
+    border: 0.1vw solid #000000;
+    border-radius: 50vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+
+/* 3.2. контейнер для свг инструментов */
+.tools-container {
+    display: flex;
+    gap: 2vw;
+}
+
+/* 3.3. индивидуальные настройки инструментов */
+.shovel img { height: 15vw; }
+.pickaxe img { height: 15vw; }
+.rake img { height: 15vw; }
+
+/* 3.4 стиль анимации инструментов */
+.tool-item {
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+}
+
+/* 3.5. ховер анимация */
+.tool-item:hover { transform: translateY(-1vw) scale(1.05); }
+
+
+
+/* 4. красный фрейм */
+.selection-frame.red-frame {
+    position: relative;
+    width: 40vw;
+    height: 32vw;
+    background-color: #FF4444; 
+    mix-blend-mode: multiply;
+    border-radius: 50vw;
+    margin-top: 0vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 4.1. наборный текст сверху и снизу */
+.selection-label {
+    font-family: 'Bounded', sans-serif;
+    font-weight: 300;
+    font-size: 1.3vw;
+    color: #FFFFFF;
+}
+.selection-label.top { margin-bottom: 7vw; }
+.selection-label.bottom { margin-top: 7vw; }
+
+/* 4.2 контейнер для цифр */
+.number-container {
+    position: relative;
+    width: 100%;
+    height: 8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.number-item {
+    position: absolute;
+    font-family: 'Bounded', sans-serif;
+    font-weight: 600; 
+    font-size: 8vw;
+    color: #FFFFFF;
+    line-height: 1;
+    opacity: 0;
+    
+    animation: relief-fade 1.8s infinite step-end;
+}
+
+/* 4.3 тайминги для цифр */
+.n1 { animation-delay: 0s; }   
+.n2 { animation-delay: 0.6s; } 
+.n3 { animation-delay: 1.2s; } 
+
+@keyframes relief-fade {
+    0%, 33.33% { opacity: 1; }
+    33.35%, 100% { opacity: 0; }
+}
+
+
+
+/* 5. cиний фрейм */
+.selection-frame.blue-frame {
+    position: relative;
+    width: 40vw;
+    height: 32vw;
+    background-color: #236CFF;
+    mix-blend-mode: multiply; 
+    border-radius: 50vw;
+    margin-left: -10vw;
+}
+
+/* 6. мастер-слой рельефов */
+.relief-master-layer {
+    position: absolute;
+    left: 66vw;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30vw;
+    height: 25vw;
+    z-index: 100; 
+}
+.relief-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.relief-item {
+    position: absolute;
+    opacity: 0;
+    animation: relief-fade 1.8s infinite step-end;
+}
+
+/* 6.1. индивидуальное позиционирование рельефов */
+.relief-item.mountain { 
+    height: 13.5vw; 
+    top: 50%; 
+    left: 48%; 
+    transform: translate(-50%, -50%); 
+}
+.relief-item.sea { 
+    height: 9vw; 
+    top: 50%; 
+    left: 48%; 
+    transform: translate(-50%, -50%); 
+}
+.relief-item.fire { 
+    height: 22vw; 
+    top: 45%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+}
+
+/* тайминги рельефа */
+.mountain { animation-delay: 0s; }
+.sea { animation-delay: 0.6s; }
+.fire { animation-delay: 1.2s; }
+
+/* 6.4 анимация смены */
+@keyframes relief-fade {
+    0%, 33.33% { opacity: 1; }
+    33.35%, 100% { opacity: 0; }
+}
+
+
+
+
+/* планшетная адаптивность 3-й секции */
+@media (max-width: 1000px) {
+
+    /* 1. бегущая строка / таб */
+    .step-header-container { height: 12vw; }
+
+    /* 2. правый экшн фрейм / таб */
+    .action-tab { height: 12vw; min-width: 40vw; }
+    .action-text { font-size: 2.8vw; }
+
+    .action-circle {
+        width: 12vw;
+        height: 12vw;
+    }
+
+
+    /* 2. фрейм с инстурментами / таб */
+    .tools-circle-frame {
+        width: 36vw;  
+        height: 36vw; 
+    }
+
+    /* 3. красный + синий фреймы / таб */
+    .selection-frame.red-frame,
+    .selection-frame.blue-frame {
+        width: 36vw; 
+        height: 36vw; 
+    }
+    .selection-label.top { margin-bottom: 6.8vw; }
+    .selection-label.bottom { margin-top: 6.8vw; }
+    .selection-frame.blue-frame { margin-left: -6.5vw; }
+
+    /* 3.1. текст в красном / таб */
+    .selection-label {
+        font-size: 2.5vw;
+        font-weight: 300;
+    }
+    .number-item {
+        font-weight: 600; 
+        font-size: 9vw;
+    }
+
+    /* 3.2. иконки рельефа / таб */
+    .relief-item.mountain { height: 13vw; left: 54%; }
+    .relief-item.sea { height: 10vw; left: 53%; }
+    .relief-item.fire { height: 24vw; left: 53%;  }
+
+}
+
+
+/* мобильная адаптивность 3-й секции */
+@media (max-width: 700px) {
+
+    /* 1. бегущая строка / тел */
+    .marquee-blue {
+        height: 16.1vw; 
+        border-radius: 0 0 0 0;
+    }
+    .marquee-blue .marquee-content { 
+        font-size: calc(6.8vw * 1.8); 
+        padding-top: 0.5vw; 
+    }
+
+
+    /* 2. убрать правый фрейм / тел */
+    .action-tab {
+        display: none;
+    }
+
+    /* 3. контейнер инструментов + 2х фреймов с рельефом / тел */
+    .step-3-main-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding-left: 0;
+        margin-top: 5vw;
+    }
+
+    /* 3.1 фрейм с инструментами / тел */
+    .tools-circle-frame {
+        width: 100%;
+        height: 50vw;
+        border-radius: 50vw;
+    }
+    .tools-container { gap: 4vw; }
+    .tools-container img { height: 30vw; }
+
+    .selection-frame.red-frame,
+    .selection-frame.blue-frame { width: 55vw; height: 50vw; }
+    .selection-frame.blue-frame { margin-left: -5vw; }
+
+
+
+
+    /* 3.2.1 индивидуальное позиционирование красного / тел */
+    .selection-frame.red-frame {
+        align-self: flex-start; 
+        margin-left: -45vw; 
+    }
+
+    /* 3.2.2 текст в красном / тел */
+    .number-item { font-size: 12vw; }
+    .selection-label.top,
+    .selection-label.bottom { display: none; }
+
+    /* 3.3.1 индивидуальное позиционирование синего / тел */
+    .selection-frame.blue-frame {
+        position: absolute; 
+        right: 0vw;
+        bottom: 0vw;
+        margin-left: 0;
+    }
+
+
+    /* 3.3.2 мастер-слой с картинками рельефа / тел */
+    .relief-master-layer {
+        left: 50%; 
+        margin-top: 25vw; 
+        width: 40vw;
+    }
+
+    .relief-item.mountain { height: 18vw; }
+    .relief-item.sea { height: 14vw; }
+    .relief-item.fire { height: 29vw; } 
 }

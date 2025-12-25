@@ -1722,6 +1722,8 @@
         font-weight: 600; 
         font-size: 9vw;
     }
+    .selection-label.top,
+    .selection-label.bottom { display: none; }
 
     /* 3.2. иконки рельефа / таб */
     .relief-item.mountain { height: 13vw; left: 54%; }
@@ -1916,12 +1918,23 @@
     
     mix-blend-mode: multiply;
 }
+/* 3.2.1 лейка */
 .watering-icon {
-    height: 17vw;
+    height: 15.5vw;
     width: auto;
-    margin-left: -9vw;
-    margin-top: 3vw;
+    margin-left: -9.5vw;
+    margin-top: 4vw;
+
+    transform-origin: 20% 50%;
+    animation: water-pour 4s ease-in-out infinite;
 }
+/* 3.2.2 анимация лейки */
+@keyframes water-pour {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    35% { transform: translate(3vw, -4vw) rotate(30deg); }
+    70% { transform: translate(0, 0) rotate(0deg); }
+}
+
 
 /* 3.3 красный фрейм с растениями */
 .red-hill {
@@ -1936,7 +1949,7 @@
 }
 
 .flora-icon {
-    height: 26vw;
+    height: 25vw;
     width: auto;
     margin-left: 10vw;
 }
@@ -1977,5 +1990,43 @@
     /* 2. убрать левый фрейм / тел */
     .action-tab.left-side {
         display: none;
+    }
+
+
+
+    /* 3. контейнеры синего + красного / тел */
+    .step-4-main-content {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5vw;
+    }
+
+    /* 3.1 общие настройки фреймов / тел */
+    .watering-frame, .flora-frame {
+        width: 100%;
+        height: 50vw;
+        border-radius: 50vw !important;
+        margin-left: 0 !important;
+    }
+    .red-hill { margin-top: -7vw; }
+
+    /* 3.1.1 лейка / тел */
+    .watering-icon {
+        height: 27vw; 
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    /* 3.1.2 растения / тел */
+    .flora-icon {
+        height: 35vw;
+        margin-left: 0;
+    }
+
+    /* 5. коррекция анимации / тел */
+    @keyframes water-pour {
+        0%, 100% { transform: translate(0, 0) rotate(0deg); }
+        35% { transform: translate(5vw, -6vw) rotate(30deg); }
+        70% { transform: translate(0, 0) rotate(0deg); }
     }
 }

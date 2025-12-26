@@ -316,7 +316,7 @@
 
 
 /* планшетная адаптивность 1-й секции */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1023px) {
 
     /* 0. высота контейнера 1-й секции / таб */
     .poster-container {
@@ -518,7 +518,7 @@
 }
 
 /* мобильная адаптивность 1-й секции */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 767px) {
 
     /* 0. шрифты / тел */
     .instruction-plaque span {
@@ -1059,7 +1059,7 @@
 
 
 /* планшетная адаптивность 2-й секции */
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
     
     /* 1. бегущая строка / таб */
     .step-header-container {
@@ -1251,7 +1251,7 @@
 }
 
 /* мобильная адаптивность 2-й секции */
-@media (max-width: 700px) {
+@media (max-width: 767px) {
 
     /* 1. бегущая строка / тел */
     .step-header-container {
@@ -1432,6 +1432,7 @@
     display: flex;
     align-items: center;
     width: 100%;
+    margin-top: 0vw;
 }
 
 /* 1.1. левая бегущая строка */
@@ -1461,14 +1462,15 @@
 
 /* 2. правый экшн фрейм */
 .action-tab {
+    position: relative;
     height: 8.05vw;
     border: 0.1vw solid #000000;
     border-radius: 10vw;
-    
     display: flex;
     align-items: center;
     padding: 0 0 0 3vw; 
-    position: relative;
+
+    margin-top: 0vw;
     min-width: 30vw;
 }
 
@@ -1682,7 +1684,7 @@
 
 
 /* планшетная адаптивность 3-й секции */
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
 
     /* 1. бегущая строка / таб */
     .step-header-container { height: 12vw; }
@@ -1734,7 +1736,7 @@
 
 
 /* мобильная адаптивность 3-й секции */
-@media (max-width: 700px) {
+@media (max-width: 767px) {
 
     /* 1. бегущая строка / тел */
     .marquee-blue {
@@ -1952,12 +1954,13 @@
     height: 25vw;
     width: auto;
     margin-left: 10vw;
+    margin-bottom: -0.5vw;
 }
 
 
 
 /* планшетная адаптивность 4-й секции */
-@media (max-width: 1000px) {
+@media (max-width: 1023px) {
 
     /* 1. высота строки и таба / таб */
     .marquee-orange, .action-tab.left-side { height: 12vw; }
@@ -1975,7 +1978,7 @@
 
 
 /* мобильная адаптивность 4-й секции */
-@media (max-width: 700px) {
+@media (max-width: 767px) {
 
     /* 1. бегущая строка / тел */
     .marquee-orange {
@@ -2029,4 +2032,342 @@
         35% { transform: translate(5vw, -6vw) rotate(30deg); }
         70% { transform: translate(0, 0) rotate(0deg); }
     }
+}
+
+
+
+
+
+/* V. контейнер 5-й секции */
+.step-5-container {
+    position: relative;
+    width: 100vw;
+    height: auto;
+    overflow: hidden; 
+    background-color: #f4f4f4; 
+    display: flex;
+    flex-direction: column;
+}
+
+/* 1. синяя бегущая строка */
+.marquee-blue-full {
+    height: 8.05vw;
+    margin-top: 3.6vw;
+    background-color: #236CFF;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+/* 1.1 текст */
+.marquee-blue-full .marquee-content {
+    font-family: 'Bounded', sans-serif;
+    font-weight: 600; 
+    font-size: 6.8vw;
+    color: #FFFFFF;
+    display: inline-block;
+    margin-top: 1vw;
+    
+    animation: marquee-scroll-reverse 2.5s linear infinite;
+}
+
+
+/* 2. контейнер трех планет */
+.planets-main-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 3.6vw 0;
+    width: 100%;
+}
+
+/* 2.1 общие стили фона планет */
+.planet-item {
+    position: relative;
+    width: 32vw;
+    height: 32vw;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+/* 2.2 общие настройки внутренних элементов */
+.inner-shape {
+    position: absolute;
+    background-color: #236CFF;
+    mix-blend-mode: plus-lighter;
+}
+
+/* 2.3.1 оранж планета */
+.orange-planet { background-color: #FF7C40; }
+.circle-small {
+    width: 16vw;
+    height: 16vw;
+    border-radius: 50%;
+    bottom: 25%;
+    left: 25%;
+
+    animation: orbit-move 2s linear infinite;
+}
+.circle-stroke {
+    width: 24vw;
+    height: 24vw;
+    border: 6.5vw solid #236CFF;
+    background-color: transparent;
+    border-radius: 50%;
+    bottom: 12.5%;
+    left: 12.5%;
+
+    animation: orbit-move-reverse 2.8s linear infinite reverse;
+}
+
+/* 2.3.2 красная планета */
+.red-planet { background-color: #FF4444; }
+.spot-1 { width: 17vw; height: 17vw; border-radius: 50%; top: 13%; right: 0%;
+          animation: pulse-size 1.5s ease-in-out infinite; }
+
+.spot-2 { width: 7vw; height: 7vw; border-radius: 50%; top: 13%; left: 38%;
+          animation: pulse-size 1.5s ease-in-out infinite 0.2s; }
+
+.spot-3 { width: 4.5vw; height: 4.5vw; border-radius: 50%; bottom: 45%; left: 10%;
+          animation: pulse-size 1.5s ease-in-out infinite 0.3s; }
+
+.spot-4 { width: 7vw; height: 7vw; border-radius: 50%; bottom: 10%; left: 25%;
+          animation: pulse-size 1.5s ease-in-out infinite 0.5s; }
+
+          
+/* 2.3.3 синяя планета */
+.blue-planet { background-color: #236CFF; }
+.triangle-1 {
+    width: 42vw;
+    height: 10vw;
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
+
+    bottom: 30%;
+    right: -30%;
+    transform: rotate(40deg);
+
+    animation: triangle-breath 1.5s infinite;
+}
+.triangle-2 {
+    width: 40vw;
+    height: 10vw;
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
+
+    top: 15%;
+    right: -15%;
+    transform: rotate(-34deg);
+
+    animation: triangle-breath 1.2s infinite;
+}
+
+.triangle-3 {
+    width: 40vw;
+    height: 10vw;
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
+
+    bottom: 10%;
+    right: -20%;
+    transform: rotate(8deg);
+
+    animation: triangle-breath 1.7s infinite;
+}
+
+/* 2.4.1 анимация оранж */
+@keyframes orbit-move {
+    0% { transform: rotate(0deg) translateX(8.2vw) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(8.2vw) rotate(-360deg); }
+}
+@keyframes orbit-move-reverse {
+    0% { transform: rotate(0deg) translateX(4.3vw) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(4.3vw) rotate(-360deg); }
+}
+
+/* 2.4.2 анимация красной */
+@keyframes pulse-size {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+}
+
+/* 2.4.3 анимация синей */
+@keyframes triangle-breath {
+    0%, 100% { clip-path: polygon(300% 15%, 0 50%, 300% 85%); }
+    50% { clip-path: polygon(85% 0%, 0 50%, 100% 100%); }
+}
+
+
+/* 3. красная статус-плашка */
+.status-tab {
+    width: 100%;
+    height: 8.05vw;
+    border: 0.1vw solid #000000;
+    border-radius: 10vw;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4vw 0 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+
+/* 3.1 группа круга + текста слева */
+.status-left-group {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+}
+
+/* 3.1.1 круг */
+.status-circle {
+    width: 8.05vw;
+    height: 8.05vw;
+    background-color: #FF4444;
+    border-radius: 50%;
+    mix-blend-mode: multiply;
+
+    animation: color-cycle-red 3s infinite step-end;
+}
+/* 3.1.2 анимация цвета круг */
+@keyframes color-cycle-red {
+    0%, 100% { background-color: #FF4444; } 
+    25% { background-color: #236CFF; }
+    50% { background-color: #FF7C40; }
+    75% { background-color: #FF4444; }
+}
+
+/* 3.1.3 текст слева */
+.status-label {
+    font-family: 'Bounded', sans-serif;
+    font-weight: 500;
+    font-size: 2vw;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #000000;
+
+    margin-top: 0.5vw;
+}
+
+
+/* 3.2 главный текст справа */
+.status-main-text {
+    font-family: 'Bounded', sans-serif;
+    font-weight: 600;
+    font-size: 6.8vw;
+    color: #000000;
+    margin-top: 1vw; 
+}
+
+
+
+
+/* планшетная адаптивность 5-й секции */
+@media (max-width: 1023px) {
+    
+    /* 1. бегущая строка / таб */
+    .step-header-container { height: 12vw; }
+    .marquee-blue-full .marquee-content { font-size: 10vw; }
+
+
+    /* 2. контейнер красной статус-плашки / таб */
+    .status-tab { height: 12vw; border-radius: 12vw; }
+
+    /* 2.1 круг и левая группа */
+    .status-circle { width: 12vw; height: 12vw; }
+    .status-left-group { gap: 3vw; }
+
+    /* 2.2 текст */
+    .status-label { font-size: 2.8vw; margin-top: 0.8vw; }
+    .status-main-text { font-size: 10vw; margin-top: 1.5vw; }
+}
+
+
+
+/* мобильная адаптивность 5-й секции */
+@media (max-width: 767px) {
+
+    /* 1. бегущая строка / тел */
+    .step-header-container {
+        height: 16.1vw !important;
+        margin-top: 5vw;
+    }
+    .marquee-blue-full .marquee-content { font-size: calc(6.8vw * 1.8); }
+
+    /* 2. контейнер-слайдер для планет / тел */
+    .planets-main-content {
+        display: flex;
+        flex-direction: row; 
+        justify-content: flex-start;
+        padding: 5vw 0;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    /* 2.1 общие стили для планет / тел */
+    .planet-item {
+        position: relative;
+        width: 90vw !important; 
+        height: 90vw !important;
+        margin: 0 5vw !important; 
+        
+        flex-shrink: 0;
+        border-radius: 50%;
+        overflow: hidden;
+        display: block;
+
+        animation: planets-paging 6.5s cubic-bezier(0.85, 0, 0.15, 1) infinite;
+    }
+
+    /* 2.2.1 элементы оранж планеты / тел */
+    .circle-small { width: 45vw; height: 45vw; bottom: 25%; left: 25%; }
+    .circle-stroke { width: 75vw; height: 75vw; border-width: 20vw; top: 8.5%; left: 8.5%; }
+
+    /* 2.2.2 элементы красной планеты / тел */
+    .spot-1 { width: 50vw; height: 50vw; top: 10%; right: 0; }
+    .spot-2 { width: 20vw; height: 20vw; top: 10%; left: 35%; }
+    .spot-3 { width: 12vw; height: 12vw; bottom: 45%; left: 5%; }
+    .spot-4 { width: 20vw; height: 20vw; bottom: 10%; left: 20%; }
+
+    /* 2.2.3 элементы синей планеты / тел */
+    .triangle-1 { width: 110vw; height: 30vw; right: -20%; }
+    .triangle-2 { width: 110vw; height: 30vw; bottom: 15%; right: -14%; }
+    .triangle-3 { width: 110vw; height: 30vw; bottom: 9%; right: -25%; }
+
+    /* 3. анимация перелистывания / тел */
+    @keyframes planets-paging {
+        0%, 20% { transform: translateX(0%); }      
+        33%, 46% { transform: translateX(-111%); }  
+        66%, 90% { transform: translateX(-222%); }  
+        100% { transform: translateX(0%); }         
+    }
+
+    /* 2.4.1 анимация оранж */
+    @keyframes orbit-move {
+        0% { transform: rotate(0deg) translateX(23vw) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(23vw) rotate(-360deg); }
+    }
+    @keyframes orbit-move-reverse {
+        0% { transform: rotate(0deg) translateX(8vw) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(8vw) rotate(-360deg); }
+    }
+
+
+    /* 3. адаптация красной статус-плашки */
+    .status-tab {
+        height: 16.1vw;
+        border-radius: 20vw;
+        padding: 0 7vw 0 0; 
+        margin: 5vw 0;
+    }
+
+    /* 3.1 круг справа */
+    .status-circle { width: 16.1vw; height: 16.1vw; }
+
+    /* 3.2 текст */
+    .status-label { display: none; }
+    .status-main-text { font-size: 12.2vw; margin-top: 2vw; }
+    .status-text-change { display: none; }
+    .status-main-text::after { content: "ГОТОВО!"; display: block; }
+    
 }

@@ -2314,8 +2314,12 @@
         flex-shrink: 0;
         border-radius: 50%;
         overflow: hidden;
-        display: block;
 
+        overflow: hidden; 
+        -webkit-mask-image: -webkit-radial-gradient(white, black); /*для safari/ios */
+        isolation: isolate;
+        
+        display: block;
         animation: planets-paging 6.5s cubic-bezier(0.85, 0, 0.15, 1) infinite;
     }
 

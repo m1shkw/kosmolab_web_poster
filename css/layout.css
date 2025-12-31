@@ -10,7 +10,7 @@
     width: 100vw;
     height: auto;
     overflow: hidden; 
-    background-color: #f4f4f4; 
+    background-color: #FFFFFF; 
 }
 
 /* 1. красная плашка */
@@ -829,7 +829,7 @@
     width: 100vw;
     height: auto;
     overflow: hidden; 
-    background-color: #f4f4f4; 
+    background-color: #FFFFFF; 
 }
 
 /* 1. контейнер бегущей строки */
@@ -1424,7 +1424,7 @@
     width: 100vw;
     height: auto;
     overflow: hidden; 
-    background-color: #f4f4f4; 
+    background-color: #FFFFFF; 
 }
 
 /* 1. контейнер бегущей строки + таба */
@@ -1825,7 +1825,7 @@
     width: 100vw;
     height: auto;
     overflow: hidden; 
-    background-color: #f4f4f4;
+    background-color: #FFFFFF;
     display: flex;
 
     flex-direction: column;
@@ -2044,7 +2044,7 @@
     width: 100vw;
     height: auto;
     overflow: hidden; 
-    background-color: #f4f4f4; 
+    background-color: #FFFFFF; 
     display: flex;
     flex-direction: column;
 }
@@ -2383,7 +2383,7 @@
 .step-6-footer {
     width: 100vw;
     padding: 4vw 0;
-    background-color: #f4f4f4;
+    background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
     gap: 3vw;
